@@ -1,49 +1,95 @@
 #ifndef _FRACTION_HPP
 #define _FRACTION_HPP
+
 #include <iostream>
-#include <string>
 
 class Fraction
 {
+private:
+    int numerator;
+    int denominator;
+
 public:
+    // Конструктор
+    Fraction(int num = 0, int den = 1)
+    {
+        if (den == 0)
+        {
+            std::cout << "Error: denominator = 0! Set to 1\n";
+            den = 1;
+        }
+        numerator = num;
+        denominator = den;
+    }
 
-	Fraction(int num, int den);
-	Fraction Sum(const Fraction& other);
-	Fraction Subtract(const Fraction& other);
-	Fraction Multiply(const Fraction& other);
-	Fraction Divide(const Fraction& other);
+    // ===== SET =====
+    void Setnumerator(int num)
+    {
+        numerator = num;
+    }
 
-	void Print()
-	{
-		std::cout << numerator << "/" << denominator;
-	}
+    void Setdenominator(int den)
+    {
+        if (den == 0)
+        {
+            std::cout << "Error: denominator = 0! Set to 1\n";
+            denominator = 1;
+        }
+        else
+        {
+            denominator = den;
+        }
+    }
 
-private:
-	void Setnumerator(int one);
-	{
-		numenator = one;
-	}
+    // ===== GET =====
+    int Getnumerator() const
+    {
+        return numerator;
+    }
 
-	void Setdenominator(int two);
-	{
-		denominator = two;
-	}
+    int Getdenominator() const
+    {
+        return denominator;
+    }
 
-	int Getnumerator() const
-	{
-		return numerator;
-	}
+    // ===== ОПЕРАЦИИ =====
+    Fraction Sum(const Fraction& other)
+    {
+        return Fraction(
+            numerator * other.denominator + other.numerator * denominator,
+            denominator * other.denominator
+        );
+    }
 
-	int Getdenominator() const
-	{
-		return denominator;
-	}
+    Fraction Subtract(const Fraction& other)
+    {
+        return Fraction(
+            numerator * other.denominator - other.numerator * denominator,
+            denominator * other.denominator
+        );
+    }
 
-private:
-	int numerator;
-	int denominator;
+    Fraction Multiply(const Fraction& other)
+    {
+        return Fraction(
+            numerator * other.numerator,
+            denominator * other.denominator
+        );
+    }
 
+    Fraction Divide(const Fraction& other)
+    {
+        return Fraction(
+            numerator * other.denominator,
+            denominator * other.numerator
+        );
+    }
 
-
+    // ===== ВЫВОД =====
+    void Print() const
+    {
+        std::cout << numerator << "/" << denominator;
+    }
 };
+
 #endif
