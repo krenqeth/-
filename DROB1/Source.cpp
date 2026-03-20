@@ -1,25 +1,29 @@
 #include "fraction.hpp"
+
 int main()
 {
-	Fraction Setnumerator(3, 10);
-	Fraction Setdenominator(14, 15);
+    Fraction one(3, 10);
+    Fraction two(14, 15);
 
-	Fraction three = Setnumerator.Sum(Setdenominator);
-	std::cout << "\nOne + Two = ";
-	three.Print();
-	std::cout << std::endl;
+    Fraction three = one.Sum(two);
+    std::cout << "One + Two = ";
+    three.Print();
+    std::cout << std::endl;
 
-	Fraction four = Setnumerator.Subtract(Setdenominator);
-	std::cout << "\nOne - Two = ";
-	four.Print();
+    Fraction four = one.Subtract(two);
+    std::cout << "One - Two = ";
+    four.Print();
+    std::cout << std::endl;
 
-	Fraction five = Setnumerator.Multiply(Setdenominator);
-	std::cout << "\nOne * Two = ";
-	five.Print();
+    Fraction five = one.Multiply(two);
+    std::cout << "One * Two = ";
+    five.Print();
+    std::cout << std::endl;
 
-	Fraction six = Setnumerator.Divide(Setdenominator);
-	std::cout << "\nOne / Two = ";
-	six.Print();
+    Fraction six = one.Divide(two);
+    std::cout << "One / Two = ";
+    six.Print();
+    std::cout << std::endl;
 
-	return 0;
+    return 0;
 }
